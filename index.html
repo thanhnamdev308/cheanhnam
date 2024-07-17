@@ -326,25 +326,28 @@
                 <div class="contact__heading">Hòm thư góp ý</div>
                 <div class="row">
                     <div class="contact__form col l-6 m-12 c-12">
-                        <form action="">
+                        <form action="https://api.web3forms.com/submit" method="POST" id="contactform">
+                            <input type="hidden" name="access_key" value="8a8f099b-14ac-4455-8507-911f1859e05d">
+                            <input type="hidden" name="subject" value="Thư góp ý gửi đến Chè Coco">
+                            <input type="checkbox" name="botcheck" id="" style="display: none;">
                             <div class="contact__form-content row">
                                 <div>Họ và tên:</div>
-                                <input type="text" id="contact__form-name"
+                                <input type="text" name="name" id="contact__form-name"
                                     placeholder="Nhập họ và tên của bạn (không bắt buộc)" class="form-input-field">
                             </div>
                             <div class="contact__form-content row">
                                 <div>Số điện thoại:</div>
-                                <input type="text" id="contact__form-phone"
+                                <input type="text" id="contact__form-phone" name="phone"
                                     placeholder="Nhập số điện thoại (không bắt buộc)" class="form-input-field">
                             </div>
                             <div class="contact__form-content row">
                                 <div>Email:</div>
-                                <input type="email" id="contact__form-email" placeholder=" Nhập email (không bắt buộc)"
-                                    class="form-input-field">
+                                <input type="email" name="email" id="contact__form-email"
+                                    placeholder=" Nhập email (không bắt buộc)" class="form-input-field">
                             </div>
                             <div class="contact__form-content row">
                                 <div>Tiêu đề:</div>
-                                <select type="text" id="contact__form-topic" placeholder="Chọn tiêu đề"
+                                <select type="text" id="contact__form-topic" name="topic" placeholder="Chọn tiêu đề"
                                     class="form-input-field" required>
                                     <option value="option1">Chọn tiêu đề</option>
                                     <option value="option2">Chất lượng đồ ăn</option>
@@ -355,11 +358,14 @@
                             </div>
                             <div class="contact__form-content row">
                                 <div>Nội dung:</div>
-                                <textarea id="contact__form-message" placeholder="Nhập nội dung"
+                                <textarea id="contact__form-message" name="message" placeholder="Nhập nội dung"
                                     class="form-input-field" required></textarea>
                             </div>
                             <div class="contact__form-content row">
                                 <button type="submit" id="submit-form-button">Gửi</button>
+                            </div>
+                            <div class="contact__form-content row">
+                                <div id="formresult"></div>
                             </div>
                         </form>
                     </div>
@@ -422,19 +428,55 @@
 </body>
 
 <script>
+    window.onload = function () {
+        // Reset the form fields when the page loads
+        document.getElementById("contactform").reset();
+    };
+
     const navInput = document.getElementById('nav__mobile-input');
 
     function toggleNavInput() {
         navInput.checked = false;
     }
 
-    // const selectElement = document.getElementById("contact__form-topic");
+    const form = document.getElementById('contactform');
+    const result = document.getElementById('formresult');
 
-    // // Example: Adding options dynamically
-    // const newOption = document.createElement("option");
-    // newOption.value = "newOptionValue";
-    // newOption.text = "Khác";
-    // selectElement.add(newOption);
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+        result.innerHTML = "Đang gửi..."
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = "Thông tin đã được gửi tới Chè Coco! Cảm ơn bạn đã góp ý ❤️";
+                } else {
+                    console.log(response);
+                    result.innerHTML = "Chưa gửi được, có vẻ hệ thống đã bị lỗi 😥. Bạn hãy vui lòng thử lại hoặc gửi trực tiếp góp ý qua email/facebook/zalo của chúng mình nha!";
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                result.innerHTML = "Chưa gửi được, có vẻ hệ thống đã bị lỗi 😥. Bạn hãy vui lòng thử lại hoặc gửi trực tiếp góp ý qua email/facebook/zalo của chúng mình nha!";
+            })
+            .then(function () {
+                form.reset();
+                setTimeout(() => {
+                    result.style.display = "none";
+                }, 5000);
+            });
+    });
 </script>
 
 </html>
