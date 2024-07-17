@@ -216,7 +216,7 @@
     background-color: ghostwhite;
     min-height: 300px;
     margin-top: 16px;
-    border-radius: 4px;
+    border-radius: 20px;
 }
 
 .products__category-title {
@@ -226,7 +226,6 @@
     font-size: large;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .products__category-list {
@@ -235,7 +234,7 @@
 
 .products__category-list li {
     margin-left: 20px;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .products__category-list ul {
@@ -250,7 +249,7 @@
 .products__item {
     margin-top: 16px;
     background-color: ghostwhite;
-    border-radius: 4px;
+    border-radius: 20px;
 }
 
 .products__item-img {
@@ -258,26 +257,22 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .products__item-name {
-    font-size: 15px;
-    line-height: 1.8rem;
-    height: 3.6rem;
+    font-size: 16px;
     margin: 10px;
     overflow: hidden;
     display: block;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
     text-overflow: ellipsis;
 }
 
 .products__item-price {
     font-size: 16px;
-    margin: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
     color: var(--text-color-blue);
 }
 /* End Products CSS */
@@ -360,25 +355,31 @@
 }
 /* End Contact CSS */
 
+/* Map CSS */
+.map__heading {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.map__block {
+    width: 60%;
+    display: flex;
+    margin: auto;
+    margin-bottom: 50px;
+}
+/* End Map CSS */
+
 /* Footer CSS */
 #footer {
     background-color: #f1f1f1;
     padding: 50px 16px;
     text-align: center;
-}
-
-.socialnetwork-icon {
-    width: 20px;
-    display: inline-block;
-    cursor: pointer;
-    opacity: 0.6;
-    margin-top: 8px;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-
-.socialnetwork-icon:hover {
-    opacity: 0.4;
 }
 
 .copyright {
@@ -498,6 +499,10 @@
 
     .contact__info-content {
         margin-left: 50px;
+    }
+
+    .map__block {
+        width: 90%;
     }
 }
 
