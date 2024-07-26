@@ -13,7 +13,12 @@
 .nav__logo {
     color: var(--text-color-black);
     line-height: 42px;
+    max-height: 42px;
     margin: auto 20px;
+}
+
+.logo__img {
+    max-height: 42px;
 }
 
 .nav__list {
