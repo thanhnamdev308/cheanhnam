@@ -1,7 +1,8 @@
 /* Navigation CSS */
 .nav {
     min-height: 42px;
-    background-color: var(--white-color);
+    /* background-color: var(--white-color); */
+    background-color: #8fffd4;
     display: flex;
     position: fixed;
     top: 0;
@@ -144,7 +145,8 @@
 
 /* Introduction CSS */
 #introduction {
-    background-color: var(--background-color-grey);
+    /* background-color: var(--background-color-grey); */
+    background-color: #e0ffff;
 }
 
 .intro__body {
@@ -218,7 +220,8 @@
 }
 
 .products__filter-content {
-    background-color: ghostwhite;
+    /* background-color: ghostwhite; */
+    background-color: #e0ffff;
     min-height: 300px;
     margin-top: 16px;
     border-radius: 20px;
@@ -253,7 +256,8 @@
 
 .products__item {
     margin-top: 16px;
-    background-color: ghostwhite;
+    /* background-color: ghostwhite; */
+    background-color: #e0ffff;
     border-radius: 20px;
 }
 
@@ -286,7 +290,8 @@
 #contact {
     padding-top: 42px;
     min-height: 500px;
-    background-color: var(--background-color-grey);
+    /* background-color: var(--background-color-grey); */
+    background-color: #e0ffff;
 }
 
 .contact__heading {
@@ -382,7 +387,7 @@
 
 /* Footer CSS */
 #footer {
-    background-color: #f1f1f1;
+    background-color: #e0ffff;
     padding: 50px 16px;
     text-align: center;
 }
