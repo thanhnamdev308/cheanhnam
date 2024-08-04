@@ -201,6 +201,10 @@
     cursor: pointer;
     color: var(--text-color-blue);
 }
+
+.xembando {
+    margin-left: 10px;
+}
 /* End Introduction CSS */
 
 /* Products CSS */
